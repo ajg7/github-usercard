@@ -60,15 +60,38 @@ const cardMaker = cardObj => {
   card.classList.add("card");
 
   const userImg = document.createElement("img");
-  userImg.src= (cardObj.image)
+  userImg.src= cardObj.image;
 
   const cardInfo = document.createElement("div");
-  cardInfo.classList.add("card-info")'
+  cardInfo.classList.add("card-info");
   
   const cardHeader = document.createElement("h3");
   cardHeader.classList.add("name");
-  cardHeader.textContent(cardObj.name)
+  cardHeader.textContent(cardObj.name);
+
+  const userName = document.createElement("p");
+  userName.classList.add("username");
+
+  const location = document.createElement("p");
+  location.textContent(`Location: ${cardObj.location}`);
+
+  const profile = document.createElement("p");
+  profile.textContent("Profile: ");
+
+  const userAddress = document.createElement("a");
+  userAddress.href = `${cardObj.address} > ${cardObj.address}`;
+
+  const followers = document.createElement("p");
+  followers.textContent(`Followers: ${cardObj.followers}`);
+
+  const following = document.createElement("p");
+  following.textContent(`Following: ${cardObj.following}`)
+
+  const bio = document.createElement("p");
+  bio.textContent(`Bio: ${cardObj.bio}`)
 }
+
+
 
 
 

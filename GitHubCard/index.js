@@ -6,7 +6,8 @@
 
 import axios from "axios";
 
-axios.get("https://api.github.com/users/ajg7")
+const getCardForUser = userName => {
+axios.get(`https://api.github.com/users/${userName}`)
   .then(response => {
     const card = cardMaker(response.data)
     const cards = document.querySelector(".cards");
@@ -15,6 +16,10 @@ axios.get("https://api.github.com/users/ajg7")
   .catch(error => {
     console.log(error);
   })
+}
+
+getCardForUser("ajg7");
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -41,17 +46,7 @@ axios.get("https://api.github.com/users/ajg7")
 
 const followersArray = ["tetondan", "dustinmyers", "justsml", "luishrd", "bigknell"];
 
-followersArray.forEach(follower => {
-  axios.get(`https://api.github.com/users/${follower}`)
-  .then(response => {
-    const card = cardMaker(response.data)
-    const cards = document.querySelector(".cards");
-    cards.appendChild(card);
-  })
-  .catch(error => {
-    console.log(error);
-  })
-})
+followersArray.forEach(follower => getCardForUser(follower))
 
 
 /*

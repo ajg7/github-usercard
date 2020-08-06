@@ -41,8 +41,16 @@ axios.get("https://api.github.com/users/ajg7")
 
 const followersArray = ["tetondan", "dustinmyers", "justsml", "luishrd", "bigknell"];
 
-followersArray.forEach(follower = > {
-
+followersArray.forEach(follower => {
+  axios.get(`https://api.github.com/users/${follower}`)
+  .then(response => {
+    const card = cardMaker(response.data)
+    const cards = document.querySelector(".cards");
+    cards.appendChild(card);
+  })
+  .catch(error => {
+    console.log(error);
+  })
 })
 
 

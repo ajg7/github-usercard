@@ -4,6 +4,10 @@
     https://api.github.com/users/<your name>
 */
 
+import axios from "axios";
+
+axios.get("https://api.github.com/users/ajg7")
+
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -49,6 +53,24 @@ const followersArray = [];
       </div>
     </div>
 */
+
+
+const cardMaker = cardObj => {
+  const card = document.createElement("div");
+  card.classList.add("card");
+
+  const userImg = document.createElement("img");
+  userImg.src= (cardObj.image)
+
+  const cardInfo = document.createElement("div");
+  cardInfo.classList.add("card-info")'
+  
+  const cardHeader = document.createElement("h3");
+  cardHeader.classList.add("name");
+  cardHeader.textContent(cardObj.name)
+}
+
+
 
 /*
   List of LS Instructors Github username's:

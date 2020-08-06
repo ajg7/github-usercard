@@ -7,7 +7,14 @@
 import axios from "axios";
 
 axios.get("https://api.github.com/users/ajg7")
-
+  .then(response => {
+    const card = cardMaker(response.data)
+    const cards = document.querySelector(".cards");
+    cards.appendChild(card);
+  })
+  .catch(error => {
+    console.log(error);
+  })
 /*
   STEP 2: Inspect and study the data coming back, this is YOUR
     github info! You will need to understand the structure of this
@@ -32,7 +39,12 @@ axios.get("https://api.github.com/users/ajg7")
     user, and adding that card to the DOM.
 */
 
-const followersArray = [];
+const followersArray = ["tetondan", "dustinmyers", "justsml", "luishrd", "bigknell"];
+
+followersArray.forEach(follower = > {
+
+})
+
 
 /*
   STEP 3: Create a function that accepts a single object as its only argument.
@@ -60,39 +72,56 @@ const cardMaker = cardObj => {
   card.classList.add("card");
 
   const userImg = document.createElement("img");
-  userImg.src= cardObj.image;
+  console.log(cardObj)
+  userImg.src= cardObj.avatar_url;
 
   const cardInfo = document.createElement("div");
   cardInfo.classList.add("card-info");
   
   const cardHeader = document.createElement("h3");
   cardHeader.classList.add("name");
-  cardHeader.textContent(cardObj.name);
+  cardHeader.textContent = cardObj.name;
 
   const userName = document.createElement("p");
   userName.classList.add("username");
 
   const location = document.createElement("p");
-  location.textContent(`Location: ${cardObj.location}`);
+  location.textContent = `Location: ${cardObj.location}`;
 
   const profile = document.createElement("p");
-  profile.textContent("Profile: ");
+  profile.textContent = "Profile: ";
 
   const userAddress = document.createElement("a");
-  userAddress.href = `${cardObj.address} > ${cardObj.address}`;
+  userAddress.href = `${cardObj.url} > ${cardObj.url}`;
 
   const followers = document.createElement("p");
-  followers.textContent(`Followers: ${cardObj.followers}`);
+  followers.textContent = `Followers: ${cardObj.followers}`;
 
   const following = document.createElement("p");
-  following.textContent(`Following: ${cardObj.following}`)
+  following.textContent = `Following: ${cardObj.following}`;
 
   const bio = document.createElement("p");
-  bio.textContent(`Bio: ${cardObj.bio}`)
+  bio.textContent = `Bio: ${cardObj.bio}`
+
+
+  card.appendChild(userImg);
+  card.appendChild(cardInfo);
+  cardInfo.appendChild(cardHeader);
+  cardInfo.appendChild(userName);
+  cardInfo.appendChild(location);
+  cardInfo.appendChild(profile);
+  profile.appendChild(userAddress);
+  cardInfo.appendChild(followers);
+  cardInfo.appendChild(following);
+  cardInfo.appendChild(bio);
+
+
+  return card;
 }
 
 
 
+/*
 
 
 /*
